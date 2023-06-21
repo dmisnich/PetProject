@@ -12,7 +12,7 @@ namespace Camera
 
         private void Start()
         {
-            _offset = cameraTransform.position - targetTransform.position;
+            _offset = cameraTransform.position - new Vector3(0, targetTransform.position.y, 0);
         }
 
         private void LateUpdate()
@@ -26,7 +26,7 @@ namespace Camera
             Vector3 position = cameraTransform.position;
             Vector3 smoothedPosition = Vector3.Lerp(position, targetPosition, SmoothSpeed);
             
-            cameraTransform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, position.z);;
+            cameraTransform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, smoothedPosition.z);
         }
     }
 }

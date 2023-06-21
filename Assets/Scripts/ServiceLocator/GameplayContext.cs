@@ -7,6 +7,7 @@ namespace ServiceLocator
         private void Awake()
         {
             Register(new GameplayModel());
+            Register(new EnemiesModel());
         }
     }
 }

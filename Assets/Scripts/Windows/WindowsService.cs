@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Windows.API;
 using Enums;
 using UI.API;
@@ -8,14 +9,14 @@ namespace Windows
 {
     public class WindowsService : IWindowsService
     {
-        private Dictionary<eWindowType, AWindow> _windowDictionary = new Dictionary<eWindowType, AWindow>();
+        private Dictionary<Type, AWindow> _windowDictionary = new Dictionary<Type, AWindow>();
 
-        public void AddWindow(eWindowType type, AWindow window)
+        public void AddWindow(Type type, AWindow window)
         {
             _windowDictionary.Add(type, window);
         }
 
-        public void ShowWindow(eWindowType windowType)
+        public void ShowWindow(Type windowType)
         {
             if (_windowDictionary.ContainsKey(windowType))
             {

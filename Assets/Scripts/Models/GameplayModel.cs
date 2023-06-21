@@ -5,6 +5,7 @@ namespace Models
     public class GameplayModel
     {
         public event Action OnGameStarted;
+        public event Action OnGameFinished;
         public bool GameStarted => _gameplayData.GameStarted;
         
         private GameplayData _gameplayData = new GameplayData();
@@ -18,6 +19,7 @@ namespace Models
         public void FinishGame()
         {
             _gameplayData.GameStarted = false;
+            OnGameFinished?.Invoke();
         }
     }
 

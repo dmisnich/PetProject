@@ -15,7 +15,7 @@ namespace Windows
         {
             foreach (var window in _windows)
             {
-                _windowsService.AddWindow(window.WindowType, window);
+                _windowsService.AddWindow(window.GetType(), window);
             }
             DIContainer.Register(_windowsService);
         }

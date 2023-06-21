@@ -2,6 +2,6 @@
 {
     public enum eWindowType
     {
-        StartGamePanel
+        StartGamePanel,
     }
 }

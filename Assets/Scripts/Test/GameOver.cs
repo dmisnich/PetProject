@@ -4,6 +4,7 @@ using Windows.API;
 using Enums;
 using Models;
 using ServiceLocator;
+using UI;
 using UnityEngine;
 
 namespace Test
@@ -35,7 +36,7 @@ namespace Test
         {
             yield return new WaitForSeconds(3);
             _gameplayModel.FinishGame();
-            _windowsService.ShowWindow(eWindowType.StartGamePanel);
+            _windowsService.ShowWindow(typeof(StartGamePopup));
         }
     }
 }
