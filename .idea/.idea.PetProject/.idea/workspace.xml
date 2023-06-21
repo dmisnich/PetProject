@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6795d48c-d14d-43b8-ab03-675264fb8015" name="Changes" comment="">
+    <list default="true" id="6795d48c-d14d-43b8-ab03-675264fb8015" name="Changes" comment="build">
+      <change afterPath="$PROJECT_DIR$/build.apk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user.keystore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PetProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PetProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Character/Impl/TouchCharacterMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Character/Impl/TouchCharacterMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,12 +17,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/byte/Desktop/TPROJECT/PetProject/Assets/Scripts/Character/Impl/TouchCharacterMovement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Slider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a53e7cd0bf8c4035ac3e78fb7b43c4a6818600/b2/b3fc6ed0/Editor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/byte/Desktop/Тестове/PetProject/Assets/Scripts/Windows/WindowsService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/db8dd72d302542a48429f7c30a0e34c778600/fb/7e83f814/InspectorElement.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/byte/Desktop/Тестове/PetProject/Assets/Scripts/Character/CharacterView.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/byte/Desktop/Тестове/PetProject/Assets/Scripts/SpawnService/ASpawner.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/byte/Desktop/TPROJECT/PetProject/ProjectSettings/ProjectSettings.asset" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -71,6 +74,7 @@
       <updated>1687262471630</updated>
       <workItem from="1687262479050" duration="10174000" />
       <workItem from="1687325909861" duration="13535000" />
+      <workItem from="1687341803671" duration="393000" />
     </task>
     <task id="LOCAL-00001" summary="character movement, camera movement, service locator, windows manager">
       <created>1687262593704</created>
@@ -86,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687325987608</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="build">
+      <created>1687342192651</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1687342192651</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,7 +121,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="character movement, camera movement, service locator, windows manager" />
     <MESSAGE value="enemies, timer, FinishGamePopup" />
-    <option name="LAST_COMMIT_MESSAGE" value="enemies, timer, FinishGamePopup" />
+    <MESSAGE value="build" />
+    <option name="LAST_COMMIT_MESSAGE" value="build" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
