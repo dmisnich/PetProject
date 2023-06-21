@@ -10,7 +10,7 @@ namespace Character.Impl
         private NavMeshAgent _agent;
         private Vector2 _touchStartPosition;
 
-        private const float AngleCoefficient = 0.2f;
+        private const float AngleCoefficient = 0.02f;
 
         public TouchCharacterMovement(Transform transform, NavMeshAgent agent)
         {
