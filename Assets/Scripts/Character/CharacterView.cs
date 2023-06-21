@@ -1,4 +1,6 @@
-﻿using Windows.API;
+﻿using System;
+using System.Collections;
+using Windows.API;
 using Character.API;
 using Character.Impl;
 using Enemy;
@@ -17,6 +19,7 @@ namespace Character
         private ICharacterInput _characterInput;
         private GameplayModel _gameplayModel;
         private IWindowsService _windowsService;
+        private Vector3 _startPosition;
         
         private void Start()
         {
@@ -24,6 +27,14 @@ namespace Character
             CharacterMovementStrategy();
             _gameplayModel = DIContainer.Resolve<GameplayModel>();
             _windowsService = DIContainer.Resolve<IWindowsService>();
+            _startPosition = transform.position;
+
+            _gameplayModel.OnGameStarted += GameStarted;
+        }
+
+        private void OnDestroy()
+        {
+            _gameplayModel.OnGameStarted -= GameStarted;
         }
 
         private void Update()
@@ -43,9 +54,23 @@ namespace Character
                 other.gameObject.TryGetComponent<MineView>(out var isMineTriggered))
             {
                 _gameplayModel.FinishGame();
-                _windowsService.ShowWindow(typeof(FinishGamePopup));
+                if (isEnemyTriggered)
+                    _windowsService.ShowWindow(typeof(FinishGamePopup));
+                else
+                    StartCoroutine(DelayForAnimation());
             }
                 
+        }
+
+        private IEnumerator DelayForAnimation()
+        {
+            yield return new WaitForSeconds(1);
+            _windowsService.ShowWindow(typeof(FinishGamePopup));
+        }
+
+        private void GameStarted()
+        {
+            transform.position = _startPosition;
         }
     }
 }

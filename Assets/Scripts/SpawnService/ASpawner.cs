@@ -8,7 +8,7 @@ namespace SpawnService
         [SerializeField] protected Vector3 maxSpawnPosition;
 
         protected abstract void Spawn();
-        protected abstract void Reset();
+        protected abstract void ResetPool();
         
         protected Vector3 GetRandomSpawnPosition()
         {

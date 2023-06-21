@@ -1,13 +1,14 @@
 ﻿using System;
 using Models;
 using ServiceLocator;
+using SpawnService;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Enemy
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class EnemyView : MonoBehaviour
+    public class EnemyView : MonoPoolObject
     {
         private EnemiesModel _enemiesModel;
         private NavMeshAgent _navMeshAgent;
@@ -43,6 +44,20 @@ namespace Enemy
         private void EnemySpeedChanged()
         {
             _navMeshAgent.speed = _enemiesModel.EnemiesSpeed;
+        }
+
+        public void StopEnemy()
+        {
+            if (IsActiveSelf())
+                _navMeshAgent.isStopped = true;
+        }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent<MineView>(out var item))
+            {
+                Destroy();
+            }
         }
     }
 }

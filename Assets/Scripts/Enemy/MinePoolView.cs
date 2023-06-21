@@ -29,14 +29,14 @@ namespace Enemy
         
         protected override void Spawn()
         {
-            Reset();
+            ResetPool();
             if (_mines.Count == countOfMines)
             {
                 foreach (var mine in _mines)
                 {
                     Vector3 spawnPosition = GetRandomSpawnPosition();
-                    mine.transform.position = spawnPosition;
-                    mine.gameObject.SetActive(true);
+                    mine.SetPosition(spawnPosition);
+                    mine.Release();
                 }
             }
             else
@@ -51,11 +51,11 @@ namespace Enemy
             }
         }
 
-        protected override void Reset()
+        protected override void ResetPool()
         {
             foreach (var mine in _mines)
             {
-                mine.gameObject.SetActive(false);
+                mine.Destroy();
             }
         }
     }

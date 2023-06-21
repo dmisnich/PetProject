@@ -1,4 +1,5 @@
 ﻿using System;
+using Random = UnityEngine.Random;
 
 namespace Models
 {
@@ -6,20 +7,25 @@ namespace Models
     {
         public event Action EnemiesSpeedChanged;
         public float EnemiesSpeed => _enemiesSpeed;
-        public float SpawnDuration => _spawnDuration;
+        public int SpawnDuration => _spawnDuration;
         
-        private float _enemiesSpeed = 2f;
-        private float _spawnDuration = 5f;
+        private float _enemiesSpeed = 2;
+        private int _spawnDuration = 2;
 
         public void SetEnemiesSpeed(float speed)
         {
-            _enemiesSpeed = speed;
+            _enemiesSpeed = speed + GetRandomSpeedHelper();
             EnemiesSpeedChanged?.Invoke();
         }
 
-        public void SetSpawnDuration(float duration)
+        public void SetSpawnDuration(int duration)
         {
             _spawnDuration = duration;
+        }
+
+        private float GetRandomSpeedHelper()
+        {
+            return Random.Range(-0.5f, 0.5f);
         }
     }
     

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Models;
 using ServiceLocator;
 using SpawnService;
@@ -24,12 +25,14 @@ namespace Enemy
             _gameplayModel = DIContainer.Resolve<GameplayModel>();
             _timer.OnTimerTick += OnTimerTick;
             _gameplayModel.OnGameStarted += StartSpawn;
+            _gameplayModel.OnGameFinished += GameFinished;
         }
 
         private void OnDestroy()
         {
             _timer.OnTimerTick -= OnTimerTick;
             _gameplayModel.OnGameStarted -= StartSpawn;
+            _gameplayModel.OnGameFinished -= GameFinished;
         }
 
         private void Update()
@@ -39,7 +42,7 @@ namespace Enemy
 
         private void OnTimerTick(int time)
         {
-            if (time % _enemiesModel.SpawnDuration == 0)
+            if (time > 0 && time % _enemiesModel.SpawnDuration == 0 && _gameplayModel.GameStarted)
             {
                 Spawn();
             }
@@ -48,19 +51,48 @@ namespace Enemy
         protected override void Spawn()
         {
             Vector3 spawnPosition = GetRandomSpawnPosition();
-            EnemyView enemyView = Instantiate(enemyViewPrefab, spawnPosition, Quaternion.identity, transform);
-            enemyView.SetTarget(target);
-            _enemies.Add(enemyView);
+            EnemyView enemyView = _enemies.FirstOrDefault(x => !x.IsActiveSelf());
+            if (enemyView != null)
+            {
+                enemyView.SetPosition(spawnPosition);
+                enemyView.Release();
+                enemyView.SetTarget(target);
+            }
+            else
+            {
+                enemyView = Instantiate(enemyViewPrefab, spawnPosition, Quaternion.identity, transform);
+                enemyView.SetTarget(target);
+                _enemies.Add(enemyView);
+            }
         }
 
-        protected override void Reset()
+        protected override void ResetPool()
         {
-            
+            foreach (var enemy in _enemies)
+            {
+                enemy.Destroy();
+            }
+        }
+
+        private void StopEnemies()
+        {
+            foreach (var enemy in _enemies)
+            {
+                enemy.StopEnemy();
+            }
         }
 
         private void StartSpawn()
         {
+            ResetPool();
             _timer.Start();
+        }
+
+        private void GameFinished()
+        {
+            StopEnemies();
+            _timer.Stop();
+            _timer.Reset();
         }
     }
 }
