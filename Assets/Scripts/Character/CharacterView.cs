@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Windows.API;
 using Character.API;
 using Character.Impl;
@@ -45,7 +44,13 @@ namespace Character
 
         private void CharacterMovementStrategy()
         {
+#if UNITY_EDITOR
+            Debug.Log("MouseCharacterMovement");
             _characterInput = new MouseCharacterMovement(transform, _agent);
+#else
+            Debug.Log("TouchCharacterMovement");
+           _characterInput = new TouchCharacterMovement(transform, _agent);
+#endif
         }
         
         private void OnTriggerEnter(Collider other)

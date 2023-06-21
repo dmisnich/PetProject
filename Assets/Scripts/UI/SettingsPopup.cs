@@ -1,5 +1,4 @@
-﻿using System;
-using Windows.API;
+﻿using Windows.API;
 using Models;
 using ServiceLocator;
 using TMPro;

@@ -9,8 +9,8 @@ namespace Models
         public float EnemiesSpeed => _enemiesSpeed;
         public int SpawnDuration => _spawnDuration;
         
-        private float _enemiesSpeed = 2;
-        private int _spawnDuration = 2;
+        private float _enemiesSpeed = 1;
+        private int _spawnDuration = 1;
 
         public void SetEnemiesSpeed(float speed)
         {
